@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "941116714915",
+    "project_id": "salon-kita-6ffb0",
+    "storage_bucket": "salon-kita-6ffb0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941116714915:android:4d65de17546b9b8f957416",
+        "android_client_info": {
+          "package_name": "com.johanesdaulattamba.salonkita"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "941116714915-bi7n4159bc7todsnjfjd6dgjhdh8l1em.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUmX5lsNDNwfOwQu-7wBLHmpWGhJCZKA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "941116714915-bi7n4159bc7todsnjfjd6dgjhdh8l1em.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
