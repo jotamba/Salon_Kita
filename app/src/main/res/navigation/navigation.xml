@@ -21,7 +21,17 @@
         android:id="@+id/nav_dashboard"
         android:name="com.johanesdaulattamba.salonkita.frontend.dash.DashboardFragment"
         android:label="Dashboard"
-        tools:layout="@layout/fragment_dashboard"/>
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_nav_dashboard_to_nav_location"
+            app:destination="@id/nav_location" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_location"
+        android:name="com.johanesdaulattamba.salonkita.frontend.fitur.LocationFragment"
+        android:label="Location"
+        tools:layout="@layout/fragment_location"/>
 
 
 </navigation>

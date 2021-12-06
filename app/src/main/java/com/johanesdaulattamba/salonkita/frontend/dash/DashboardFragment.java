@@ -28,7 +28,7 @@ public class DashboardFragment extends Fragment {
     private CardView cardBook, cardOrder, cardLocation, cardHistory;
     private final static String TAG_FRAGMENT = "TAG_FRAGMENT";
     Context context;
-    private static final int LOCATION_REQEST = 1;
+    private static final int LOCATION_REQUEST = 1;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -112,17 +112,17 @@ public class DashboardFragment extends Fragment {
             }
         });
 
-//        cardLocation.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-//                    ActivityCompat.requestPermissions(getActivity(),new String[] {Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_REQUEST);
-//                }else {
-//                    Navigation.findNavController(view).navigate(R.id.action_nav_dashboard_to_nav_location);
-//                }
-//
-//            }
-//        });
+        cardLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(getActivity(),new String[] {Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_REQUEST);
+                }else {
+                    Navigation.findNavController(view).navigate(R.id.action_nav_dashboard_to_nav_location);
+                }
+
+            }
+        });
 
 
         return view;
