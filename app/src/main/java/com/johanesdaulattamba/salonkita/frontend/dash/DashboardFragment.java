@@ -87,7 +87,7 @@ public class DashboardFragment extends Fragment {
         cardBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Navigation.findNavController(view).navigate(R.id.action_nav_dashboard_to_nav_book);
+                Navigation.findNavController(view).navigate(R.id.action_nav_dashboard_to_nav_book);
             }
         });
 

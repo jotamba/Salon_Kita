@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_nav_dashboard_to_nav_order"
             app:destination="@id/nav_order" />
+        <action
+            android:id="@+id/action_nav_dashboard_to_nav_book"
+            app:destination="@id/nav_book" />
     </fragment>
 
     <fragment
@@ -55,6 +58,13 @@
         <action
             android:id="@+id/action_nav_beli_to_nav_dashboard"
             app:destination="@id/nav_dashboard" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_book"
+        android:name="com.johanesdaulattamba.salonkita.frontend.fitur.BookFragment"
+        android:label="Booking"
+        tools:layout="@layout/fragment_book">
     </fragment>
 
 
