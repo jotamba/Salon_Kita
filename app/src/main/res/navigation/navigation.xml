@@ -51,6 +51,12 @@
         android:id="@+id/nav_beli"
         android:name="com.johanesdaulattamba.salonkita.frontend.fitur.pembelian.PembelianFragment"
         android:label="Pembelian"
-        tools:layout="@layout/fragment_pembelian"/>
+        tools:layout="@layout/fragment_pembelian">
+        <action
+            android:id="@+id/action_nav_beli_to_nav_dashboard"
+            app:destination="@id/nav_dashboard" />
+    </fragment>
+
+
 
 </navigation>

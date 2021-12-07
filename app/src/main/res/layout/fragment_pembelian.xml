@@ -14,9 +14,8 @@
         android:layout_margin="30dp"
         android:orientation="vertical">
 
-
         <TextView
-            android:id="@+id/nameView"
+            android:id="@+id/namaPembeliView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -25,7 +24,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/namaBarang"
+            android:id="@+id/namaBarangView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -35,7 +34,7 @@
 
 
         <TextView
-            android:id="@+id/FungsiView"
+            android:id="@+id/fungsiView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -44,7 +43,7 @@
             android:textColor="@color/PrimaryText" />
 
         <TextView
-            android:id="@+id/HargaView"
+            android:id="@+id/hargaView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

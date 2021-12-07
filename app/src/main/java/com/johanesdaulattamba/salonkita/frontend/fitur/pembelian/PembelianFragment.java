@@ -1,13 +1,23 @@
 package com.johanesdaulattamba.salonkita.frontend.fitur.pembelian;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.johanesdaulattamba.salonkita.R;
+import com.johanesdaulattamba.salonkita.frontend.fitur.RecyclerViewAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +25,17 @@ import com.johanesdaulattamba.salonkita.R;
  * create an instance of this fragment.
  */
 public class PembelianFragment extends Fragment {
+
+    public static final String TAG = "TAG";
+    FirebaseAuth fAuth;
+    String userId, email;
+    FirebaseFirestore fStore;
+    FirebaseUser user;
+    StorageReference storageReference;
+
+    TextView namaPembeliView, namaBarangView, fungsiView, hargaView;
+    Button btn_beli;
+    private ProgressDialog progressDialog;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,6 +81,40 @@ public class PembelianFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pembelian, container, false);
+        View root = inflater.inflate(R.layout.fragment_pembelian, container, false);
+        String namabarang = getArguments().getString(RecyclerViewAdapter.NamaBarang);
+        String fungsi = getArguments().getString(RecyclerViewAdapter.Fungsi);
+        Double harga = getArguments().getDouble(RecyclerViewAdapter.Harga);
+
+        progressDialog = new ProgressDialog((getContext()));
+
+        namaPembeliView = root.findViewById(R.id.namaPembeliView);
+        namaBarangView = root.findViewById(R.id.namaBarangView);
+        fungsiView = root.findViewById(R.id.fungsiView);
+        hargaView = root.findViewById(R.id.hargaView);
+
+        namaPembeliView.setText(namabarang);
+        namaBarangView.setText(namabarang);
+        fungsiView.setText(fungsi);
+        hargaView.setText("Rp" + harga.toString());
+
+        btn_beli = root.findViewById(R.id.btn_beli);
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        storageReference = FirebaseStorage.getInstance().getReference();
+        userId = fAuth.getCurrentUser().getUid();
+        user = fAuth.getCurrentUser();
+
+        btn_beli.setOnClickListener(new View.OnClickListener() {
+
+
+
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_nav_beli_to_nav_dashboard);
+           }
+        });
+        return root;
     }
 }
