@@ -177,8 +177,8 @@ public class BookFragment extends Fragment {
 
                 //Navigation.findNavController(view).navigate(R.id.action_nav_book_to_nav_dashboard);
 
-                try {
-                    Date dateIn = sdf.parse(date1);
+//                try {
+//                    Date dateIn = sdf.parse(date1);
 
 //                    if (jam == 0) {
 //                        Toast.makeText(getActivity(), "Minimum Booking 1 Jam", Toast.LENGTH_SHORT).show();
@@ -192,42 +192,20 @@ public class BookFragment extends Fragment {
                     userId = fAuth.getCurrentUser().getUid();
                     user = fAuth.getCurrentUser();
 
-                    final DocumentReference documentReference = fStore.collection("users").document(userId);
-                    documentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
-                        @Override
-                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                            if (documentSnapshot.exists()) {
-                                email = documentSnapshot.getString("email");
-                                try {
-                                    saveBooking(email);
-                                } catch (ParseException parseException) {
-                                    parseException.printStackTrace();
-                                }
-                            } else {
-                                Log.d("tag", "onEvent: Document do not exists");
-                            }
 
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            builder.setTitle("Thank you for your booking")
-                                    .setMessage("Please check your booking history to see detailed data of your booking")
-                                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
+//                                        @Override
+//                                        public void onClick(DialogInterface dialogInterface, int i) {
                                                 Navigation.findNavController(view).navigate(R.id.action_nav_book_to_nav_dashboard);
 
-                                            }
-                                        }).create().show();
-
-
-                            }
-                        });
+//                            }
+//                        });
 
 
 //                    }
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
+//
             }
         });
         return root;
