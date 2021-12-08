@@ -41,12 +41,12 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox cbShowPw;
     TextView textview;
     FirebaseAuth firebaseAuth;
-    com.johanesdaulattamba.salonkita.AppPreferencesManager preferencesManager;
+    AppPreferencesManager preferencesManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        preferencesManager = new com.johanesdaulattamba.salonkita.AppPreferencesManager(this);
+        preferencesManager = new AppPreferencesManager(this);
         if (preferencesManager.getDarkModeState()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, com.johanesdaulattamba.salonkita.RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -159,7 +159,7 @@ public class LoginActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     if(firebaseAuth.getCurrentUser().isEmailVerified()){
                                         Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(LoginActivity.this, com.johanesdaulattamba.salonkita.HomeActivity.class); //main harus ubah ke homepage
+                                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class); //main harus ubah ke homepage
                                         startActivity(intent);
                                         createNotificationChannel();
                                         addNotification();
@@ -204,7 +204,7 @@ public class LoginActivity extends AppCompatActivity {
                 .setContentText("Selamat Datang")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-        Intent notificationIntent = new Intent( this, com.johanesdaulattamba.salonkita.MainActivity.class);
+        Intent notificationIntent = new Intent( this, MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(contentIntent);
 

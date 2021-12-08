@@ -1,5 +1,6 @@
 package com.johanesdaulattamba.salonkita.frontend.fitur;
 
+import android.content.Intent;
 import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;

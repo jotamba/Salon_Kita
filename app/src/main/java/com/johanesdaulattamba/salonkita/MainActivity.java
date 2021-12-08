@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private static final int SPLASH_TIME_OUT = 7000;
-    com.johanesdaulattamba.salonkita.AppPreferencesManager preferencesManager;
+    AppPreferencesManager preferencesManager;
     FirebaseAuth fAuth;
     FirebaseUser user;
 
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         user = fAuth.getCurrentUser();
-        preferencesManager = new com.johanesdaulattamba.salonkita.AppPreferencesManager(this);
+        preferencesManager = new AppPreferencesManager(this);
 
         if (preferencesManager.getDarkModeState()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(user !=null){
-                    Intent homeIntentLogin = new Intent(MainActivity.this, com.johanesdaulattamba.salonkita.HomeActivity.class);
+                    Intent homeIntentLogin = new Intent(MainActivity.this, HomeActivity.class);
                     startActivity(homeIntentLogin);
                 }
                 else{

@@ -2,6 +2,7 @@ package com.johanesdaulattamba.salonkita.frontend.dash;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
@@ -14,8 +15,10 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.PermissionRequest;
 
 import com.johanesdaulattamba.salonkita.R;
+import com.johanesdaulattamba.salonkita.frontend.fitur.QRCodeFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,16 +28,19 @@ import com.johanesdaulattamba.salonkita.R;
 public class DashboardFragment extends Fragment {
 
     // init cardview
-    private CardView cardBook, cardOrder, cardLocation, cardHistory;
+    private CardView cardBook, cardOrder, cardLocation, cardHistory, cardQR;
     private final static String TAG_FRAGMENT = "TAG_FRAGMENT";
     Context context;
     private static final int LOCATION_REQUEST = 1;
+    private static final int CAMERA_REQUEST = 1;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     static public final int REQUEST_LOCATION = 1;
+    static public final int REQUEST_CAMERA = 1;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -83,6 +89,7 @@ public class DashboardFragment extends Fragment {
         cardOrder = view.findViewById(R.id.order);
         cardHistory = view.findViewById(R.id.card_history);
         cardLocation = view.findViewById(R.id.cardLocation);
+        cardQR = view.findViewById(R.id.cardQR);
 
         cardBook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +124,17 @@ public class DashboardFragment extends Fragment {
             }
         });
 
+        cardQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(getActivity(),new String[] {Manifest.permission.CAMERA},CAMERA_REQUEST);
+                }else {
+                    Navigation.findNavController(view).navigate(R.id.action_nav_dashboard_to_nav_qr);
+                }
+
+            }
+        });
 
         return view;
     }

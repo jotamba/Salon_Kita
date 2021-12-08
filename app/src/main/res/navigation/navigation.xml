@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_nav_dashboard_to_nav_book"
             app:destination="@id/nav_book" />
+        <action
+            android:id="@+id/action_nav_dashboard_to_nav_qr"
+            app:destination="@id/nav_qr" />
     </fragment>
 
     <fragment
@@ -65,6 +68,29 @@
         android:name="com.johanesdaulattamba.salonkita.frontend.fitur.BookFragment"
         android:label="Booking"
         tools:layout="@layout/fragment_book">
+        <action
+            android:id="@+id/action_nav_book_to_nav_dashboard"
+            app:destination="@id/nav_dashboard" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_qr"
+        android:name="com.johanesdaulattamba.salonkita.frontend.fitur.QRCodeFragment"
+        android:label="QRReader"
+        tools:layout="@layout/fragment_q_r_code">
+        <action
+            android:id="@+id/action_nav_qr_to_nav_qrdata"
+            app:destination="@id/nav_qrdata" />
+        <action
+            android:id="@+id/action_nav_qr_to_nav_dashboard"
+            app:destination="@id/nav_dashboard" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_qrdata"
+        android:name="com.johanesdaulattamba.salonkita.frontend.fitur.qrcode.QRDataReadFragment"
+        android:label="QRDataReader"
+        tools:layout="@layout/fragment_q_r_data_read">
     </fragment>
 
 

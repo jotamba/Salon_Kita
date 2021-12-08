@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
-    com.johanesdaulattamba.salonkita.AppPreferencesManager preferencesManager;
+    AppPreferencesManager preferencesManager;
     private AppBarConfiguration mAppBarConfiguration;
     String userId;
     FirebaseFirestore fStore;
@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        preferencesManager = new com.johanesdaulattamba.salonkita.AppPreferencesManager(this);
+        preferencesManager = new AppPreferencesManager(this);
 
         //check mode
         if (preferencesManager.getDarkModeState()) {

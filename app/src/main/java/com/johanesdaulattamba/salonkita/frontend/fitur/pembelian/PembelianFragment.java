@@ -1,23 +1,44 @@
 package com.johanesdaulattamba.salonkita.frontend.fitur.pembelian;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.johanesdaulattamba.salonkita.R;
 import com.johanesdaulattamba.salonkita.frontend.fitur.RecyclerViewAdapter;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
+import javax.annotation.Nullable;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -105,16 +126,93 @@ public class PembelianFragment extends Fragment {
         storageReference = FirebaseStorage.getInstance().getReference();
         userId = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
+//
+//        final DocumentReference documentReference = fStore.collection("users").document(userId);
+//        documentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+//                if (documentSnapshot.exists()) {
+//                    namaPembeliView.setText(documentSnapshot.getString("fName"));
+//                } else {
+//                    Log.d("tag", "onEvent: Document do not exists");
+//                }
+//            }
+//        });
 
         btn_beli.setOnClickListener(new View.OnClickListener() {
 
-
+//            Navigation.findNavController(view).navigate(R.id.action_nav_beli_to_nav_dashboard);
 
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_nav_beli_to_nav_dashboard);
+
+//                long finalPrice = 1 * (harga).longValue();
+//                Double d = Long.valueOf(finalPrice).doubleValue();
+//
+//                fAuth = FirebaseAuth.getInstance();
+//                fStore = FirebaseFirestore.getInstance();
+//                storageReference = FirebaseStorage.getInstance().getReference();
+//                userId = fAuth.getCurrentUser().getUid();
+//                user = fAuth.getCurrentUser();
+//
+//                final DocumentReference documentReference = fStore.collection("users").document(userId);
+//                documentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
+//                    @Override
+//                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+//                        if (documentSnapshot.exists()) {
+//                            email = documentSnapshot.getString("email");
+//                            try {
+//                                //saveBooking(d, email);
+//                            } catch (ParseException parseException) {
+//                                parseException.printStackTrace();
+//                            }
+//                        } else {
+//                            Log.d("tag", "onEvent: Document do not exists");
+//                        }
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                        builder.setTitle("Thank you for your order")
+//                                .setMessage("Please check your transaction history to see detailed data of your transaction")
+//                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Navigation.findNavController(view).navigate(R.id.action_nav_beli_to_nav_dashboard);
+//                                     }
+//                                }).create().show();
+
+//                    }
+//                });
+//
            }
         });
         return root;
     }
+
+
+//    private void saveBooking(Double finalPrice, String email) throws ParseException {
+//        final String NamaP = namaPembeliView.getText().toString();
+//        final String NamaB = namaBarangView.getText().toString();
+//        final String Fungsi = fungsiView.getText().toString();
+//        final String Harga = hargaView.getText().toString();
+//
+//        final Double Harga = finalPrice;
+//        final String emailUser = email;
+//        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+//        Call<TransaksiResponse> add = apiService.createBeli(emailUser, NamaP, NamaB, Fungsi, Harga);
+//
+//
+//        add.enqueue(new Callback<TransaksiResponse>() {
+//            @Override
+//            public void onResponse(Call<TransaksiResponse> call, Response<TransaksiResponse> response) {
+//                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+//                progressDialog.dismiss();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<TransaksiResponse> call, Throwable t) {
+//                progressDialog.dismiss();
+//
+//            }
+//        });
+//    }
+
 }
